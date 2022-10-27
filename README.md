@@ -16,7 +16,7 @@ You can simply copy and paste the contents of [Destructors.gml](https://github.c
 
 ### Usage
 
-Destructors are registered via the `dtor_track(type, value, [option])` function. This function can be called multiple times on the same struct instance to registered multiple destructors.
+Destructors are registered via the `dtor(type, value, [option])` function. This function can be called multiple times on the same struct instance to registered multiple destructors.
 
 In order to register a destructor callback,
 
@@ -25,7 +25,7 @@ In order to register a destructor callback,
 function foo() constructor {
 	name = "Zach";
 	
-	dtor_track(DtorType.Function, function () {
+	dtor(DtorType.Function, function () {
 		show_debug_message("Destructed!");
 	});
 }
@@ -39,7 +39,7 @@ In order to register a destructor to clean an allocated `ds_*`,
 function test1() constructor {
     list = ds_list_create();
 
-    dtor_track(DtorType.List, list);
+    dtor(DtorType.List, list);
 }
 
 var a = new test1();  // foo.list exists
