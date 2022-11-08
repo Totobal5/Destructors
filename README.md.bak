@@ -46,7 +46,7 @@ var a = new test1();  // foo.list exists
 delete a;             // foo.list has been destroyed
 ```
 
-Additionally, `Sprite`, `Surface`, `VertexBuffer`, `VertexFormat`, `Path`, `AnimCurve` and `Instance` types can be destroyed via `dtor`.
+Additionally, `Sprite`, `Surface`, `VertexBuffer`, `VertexFormat`, `Path`, `AnimCurve` and `Instance` types can be destroyed via `dtor_track`.
 
 ## Running the Example
 
