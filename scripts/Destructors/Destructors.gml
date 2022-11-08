@@ -49,9 +49,12 @@ function DtorManager() {
 /// @param {Any} [options]
 /// @param {Any} [reference]
 function DtorInstance(_type, _value, _option, _ref) constructor {
+	static use = {}; // Bound Methods to this struct
+	
 	reference = weak_ref_create(_ref);
-	type   =   _type;
-	value  =  _value;
+	type  = _type;
+	// Not bound
+	value  = (is_method(_value) ) ? method(use, _value) : _value;
 	option = _option;
 }
 
@@ -75,19 +78,12 @@ function dtor(_type, _value, _option, _ref=self) {
 // Startup
 with (DtorManager() ) {
 	step = time_source_create(time_source_global, DTOR_TIME, time_source_units_frames, function() {
-		// Feather disable once GM2017
-		static clip = function(_data, _min, _max) 
-		{
-			if (_data > _max) {return (_min); } else
-			if (_data < _min) {return (_max); } 
-			return (_data );
-		}
 		if (size > 0) {
 			var _inst = list[| index];
 			// Still alive
 			if (!weak_ref_alive(_inst.reference) ) {
 				switch(_inst.type) {
-					case DtorType.Function:		_inst.value(_inst.option);					break;
+					case DtorType.Function:		_inst.value(_inst.option);					break; // Metodos
 					case DtorType.Script:		script_execute(_inst.value, _inst.option);	break;
 					
 					case DtorType.List:			ds_list_destroy(_inst.value);		break;
@@ -110,12 +106,13 @@ with (DtorManager() ) {
 					
 				ds_list_delete(list, index);
 				size = size - 1; // Update list size
-				if (size  <= 0) time_source_stop(step);
+				if (size  <= 0) time_source_stop(step); // Stop time source
 				if (DTOR_DEBUG) show_debug_message("Dtor Deleted " + string(index) );
 				index = index - 1;
 				if (index <  0) index = 0;
 				//
 			}
+			// Alive
 			else {
 				index = index + 1;
 				if (index >= size) index = 0;

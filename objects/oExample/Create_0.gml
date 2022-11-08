@@ -3,7 +3,10 @@ function test1() constructor {
 		list = ds_list_create();
 		global.listReference = list;
 		dtor(DtorType.List, list);
-	}
+		dtor(DtorType.Function, function() {
+			show_message("The test1 list is destroyed");
+		});
+ 	}
     start();
 }
 
