@@ -1,0 +1,7 @@
+{
+  "FolderOrderSettings": [],
+  "ResourceOrderSettings": [
+    {"name":"oExample_CallbackScript","order":1,"path":"scripts/oExample_CallbackScript/oExample_CallbackScript.yy",},
+    {"name":"Destructors","order":11,"path":"scripts/Destructors/Destructors.yy",},
+  ],
+}
