@@ -6,32 +6,32 @@ This library adds destructors to GameMaker: Studio 2.3's release. This allows yo
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-### Installation via Local Package (.yymps)
+### Installation via Local Package (.yymp)
 
-GameMaker Studio 2 allows you to import assets, including scripts and shaders, directly into your project via the "Local Package" system. From the [Releases](https://github.com/DatZach/Destructors/releases) tab for this repo, download the .yymp file for the latest version. In the GMS2 IDE, load up your project and click on "Tools" on the main window toolbar. Select "Import Local Package" from the drop-down menu then import all scripts from the Destructors package.
+GameMaker Studio 2 allows you to import assets, including scripts and shaders, directly into your project via the "Local Package" system. From the [Releases](https://github.com/Totobal5/Destructors/releases) tab for this repo, download the .yymp file for the latest version. In the GMS2 IDE, load up your project and click on "Tools" on the main window toolbar. Select "Import Local Package" from the drop-down menu then import all scripts from the Destructors package.
 
 ### Installation via Copy/Paste
 
-You can simply copy and paste the contents of [Destructors.gml](https://github.com/DatZach/Destructors/blob/master/scripts/Destructors/Destructors.gml) into a new Script in your project.
+You can simply copy and paste the contents of [Destructors.gml](https://github.com/Totobal5/Destructors/blob/master/scripts/Destructors/Destructors.gml) into a new Script in your project.
 
 ### Usage
 
-Destructors are registered via the `dtor(type, value, [option])` function. This function can be called multiple times on the same struct instance to registered multiple destructors.
+Destructors are registered via the `dtor(type, value, [option])` function. This function can be called multiple times on the same struct instance to register multiple destructors.
 
 In order to register a destructor callback,
 
-*Note that struct members cannot be accessed inside of the callback.*
+*If you need state in the callback, pass it in via `option`.*
 ```javascript
 function foo() constructor {
 	name = "Zach";
-	
-	dtor(DtorType.Function, function () {
-		show_debug_message("Destructed!");
-	});
+
+	dtor(DtorType.Function, function(_payload) {
+		show_debug_message("Destructed " + _payload.name + "!");
+	}, { name: name });
 }
 
 var a = new foo();
-delete a;           // "Destructed!"
+delete a;           // "Destructed Zach!"
 ```
 
 In order to register a destructor to clean an allocated `ds_*`,
@@ -46,7 +46,7 @@ var a = new test1();  // foo.list exists
 delete a;             // foo.list has been destroyed
 ```
 
-Additionally, `Sprite`, `Surface`, `VertexBuffer`, `VertexFormat`, `Path`, `AnimCurve` and `Instance` types can be destroyed via `dtor`.
+Additionally, `Script`, `Buffer`, `Sprite`, `Surface`, `VertexBuffer`, `VertexFormat`, `Path`, `AnimCurve` and `Instance` types can be destroyed via `dtor`.
 
 ## Running the Example
 

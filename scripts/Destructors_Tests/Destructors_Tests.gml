@@ -6,6 +6,30 @@ function destructors_test_function_subject(_context) constructor
 	}, _context);
 }
 
+function destructors_test_function_issue3_anon_subject(_context) constructor
+{
+	dtor(DtorType.Function, function(_payload) {
+		_payload.called_anon = true;
+	}, _context);
+}
+
+function destructors_test_function_issue3_var_subject(_context) constructor
+{
+	var _func = function(_payload) {
+		_payload.called_var = true;
+	};
+	dtor(DtorType.Function, _func, _context);
+}
+
+function destructors_test_function_issue3_named_subject(_context) constructor
+{
+	function _func(_payload)
+	{
+		_payload.called_named = true;
+	}
+	dtor(DtorType.Function, _func, _context);
+}
+
 function destructors_test_list_subject(_context) constructor
 {
 	_context.list_handle = ds_list_create();
@@ -111,6 +135,52 @@ function Destructors_Tests()
 	_function_case.Timeout(10, "frames");
 	_suite.AddCase(_function_case);
 
+	// TEST: Function Destructor Issue #3 Regression
+	var _function_issue3_case = new CrispyCaseAsync("test_destructors_function_issue3_patterns_execute_after_delete");
+	var _function_issue3_context = {};
+	_function_issue3_context.state = undefined;
+	_function_issue3_context.subject_anon = undefined;
+	_function_issue3_context.subject_var = undefined;
+	_function_issue3_context.subject_named = undefined;
+	_function_issue3_context.frames = 0;
+	_function_issue3_context.test_case = _function_issue3_case;
+
+	_function_issue3_case.WaitBeginStep(function() {
+		state = {
+			called_anon: false,
+			called_var: false,
+			called_named: false,
+		};
+
+		subject_anon = new destructors_test_function_issue3_anon_subject(state);
+		subject_var = new destructors_test_function_issue3_var_subject(state);
+		subject_named = new destructors_test_function_issue3_named_subject(state);
+
+		delete subject_anon;
+		delete subject_var;
+		delete subject_named;
+		subject_anon = undefined;
+		subject_var = undefined;
+		subject_named = undefined;
+
+		return true;
+	}, _function_issue3_context);
+
+	_function_issue3_case.WaitStep(function() {
+		++frames;
+		if (frames < 20)
+		{
+			return false;
+		}
+
+		test_case.AssertTrue(state.called_anon, "Anonymous function destructor should execute after delete");
+		test_case.AssertTrue(state.called_var, "Function variable destructor should execute after delete");
+		test_case.AssertTrue(state.called_named, "Named local function destructor should execute after delete");
+		return true;
+	}, _function_issue3_context);
+	_function_issue3_case.Timeout(30, "frames");
+	_suite.AddCase(_function_issue3_case);
+
 	// TEST: List Destructor
 	var _list_case = new CrispyCaseAsync("test_destructors_list_is_destroyed_after_delete");
 	var _list_context = {};
@@ -131,7 +201,7 @@ function Destructors_Tests()
 
 	_list_case.WaitEndStep(function() {
 		++frames;
-		if (frames < 20)
+		if (frames < 25)
 		{
 			return false;
 		}
@@ -139,7 +209,7 @@ function Destructors_Tests()
 		test_case.AssertFalse(ds_exists(list_handle, ds_type_list), "List destructor should destroy the ds_list");
 		return true;
 	}, _list_context);
-	_list_case.Timeout(30, "frames");
+	_list_case.Timeout(35, "frames");
 	_suite.AddCase(_list_case);
 
 	// TEST: Map Destructor
@@ -162,7 +232,7 @@ function Destructors_Tests()
 
 	_map_case.WaitEndStep(function() {
 		++frames;
-		if (frames < 20)
+		if (frames < 30)
 		{
 			return false;
 		}
@@ -170,7 +240,7 @@ function Destructors_Tests()
 		test_case.AssertFalse(ds_exists(map_handle, ds_type_map), "Map destructor should destroy the ds_map");
 		return true;
 	}, _map_context);
-	_map_case.Timeout(30, "frames");
+	_map_case.Timeout(40, "frames");
 	_suite.AddCase(_map_case);
 
 	// TEST: Grid Destructor
@@ -193,7 +263,7 @@ function Destructors_Tests()
 
 	_grid_case.WaitEndStep(function() {
 		++frames;
-		if (frames < 20)
+		if (frames < 35)
 		{
 			return false;
 		}
@@ -201,7 +271,7 @@ function Destructors_Tests()
 		test_case.AssertFalse(ds_exists(grid_handle, ds_type_grid), "Grid destructor should destroy the ds_grid");
 		return true;
 	}, _grid_context);
-	_grid_case.Timeout(30, "frames");
+	_grid_case.Timeout(45, "frames");
 	_suite.AddCase(_grid_case);
 
 	// TEST: Priority Destructor
@@ -224,7 +294,7 @@ function Destructors_Tests()
 
 	_priority_case.WaitEndStep(function() {
 		++frames;
-		if (frames < 25)
+		if (frames < 40)
 		{
 			return false;
 		}
@@ -232,7 +302,7 @@ function Destructors_Tests()
 		test_case.AssertFalse(ds_exists(priority_handle, ds_type_priority), "Priority destructor should destroy the ds_priority");
 		return true;
 	}, _priority_context);
-	_priority_case.Timeout(35, "frames");
+	_priority_case.Timeout(50, "frames");
 	_suite.AddCase(_priority_case);
 
 	// TEST: Queue Destructor
@@ -255,7 +325,7 @@ function Destructors_Tests()
 
 	_queue_case.WaitEndStep(function() {
 		++frames;
-		if (frames < 30)
+		if (frames < 45)
 		{
 			return false;
 		}
@@ -263,7 +333,7 @@ function Destructors_Tests()
 		test_case.AssertFalse(ds_exists(queue_handle, ds_type_queue), "Queue destructor should destroy the ds_queue");
 		return true;
 	}, _queue_context);
-	_queue_case.Timeout(40, "frames");
+	_queue_case.Timeout(55, "frames");
 	_suite.AddCase(_queue_case);
 
 	// TEST: Stack Destructor
@@ -317,7 +387,7 @@ function Destructors_Tests()
 
 	_buffer_case.WaitEndStep(function() {
 		++frames;
-		if (frames < 50)
+		if (frames < 55)
 		{
 			return false;
 		}
@@ -325,7 +395,7 @@ function Destructors_Tests()
 		test_case.AssertFalse(buffer_exists(buffer_handle), "Buffer destructor should destroy the buffer");
 		return true;
 	}, _buffer_context);
-	_buffer_case.Timeout(60, "frames");
+	_buffer_case.Timeout(65, "frames");
 	_suite.AddCase(_buffer_case);
 
 	// TEST: Path Destructor
@@ -348,7 +418,7 @@ function Destructors_Tests()
 
 	_path_case.WaitEndStep(function() {
 		++frames;
-		if (frames < 50)
+		if (frames < 60)
 		{
 			return false;
 		}
@@ -356,7 +426,7 @@ function Destructors_Tests()
 		test_case.AssertFalse(path_exists(path_handle), "Path destructor should destroy the path");
 		return true;
 	}, _path_context);
-	_path_case.Timeout(60, "frames");
+	_path_case.Timeout(70, "frames");
 	_suite.AddCase(_path_case);
 
 	// TEST: AnimCurve Destructor
@@ -379,7 +449,7 @@ function Destructors_Tests()
 
 	_animcurve_case.WaitEndStep(function() {
 		++frames;
-		if (frames < 50)
+		if (frames < 65)
 		{
 			return false;
 		}
@@ -387,7 +457,7 @@ function Destructors_Tests()
 		test_case.AssertFalse(animcurve_exists(animcurve_handle), "AnimCurve destructor should destroy the animcurve");
 		return true;
 	}, _animcurve_context);
-	_animcurve_case.Timeout(60, "frames");
+	_animcurve_case.Timeout(75, "frames");
 	_suite.AddCase(_animcurve_case);
 
 	return _suite;

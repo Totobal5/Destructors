@@ -4,7 +4,7 @@
 /// @author Torin Freimiller <Nommiin>
 
 /// @ignore [MAJOR.MINOR.PATCH]
-#macro DTOR_VERSION		"1.3.0"
+#macro DTOR_VERSION		"1.3.1"
 /// @ignore
 #macro DTOR_ALERT		true
 /// @ignore Log alerts in the time_source loop.
@@ -136,9 +136,9 @@ function __dtor_validate_registration(_type, _value, _ref)
 	switch(_type)
 	{
 		case DtorType.Function:
-			if (!is_method(_value) )
+			if (!is_method(_value) && !is_callable(_value) )
 			{
-				__dtor_error("DtorType.Function requires a method/function value.");
+				__dtor_error("DtorType.Function requires a callable function value.");
 				return false;
 			}
 		break;
