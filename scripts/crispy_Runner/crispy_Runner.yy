@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"crispy_Runner",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"crispy_Runner",
+  "parent":{
+    "name":"Crispy",
+    "path":"folders/Crispy.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

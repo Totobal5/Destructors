@@ -1,17 +1,5 @@
-var _string = @"
-GMS 2.3.1 Destructors - Zach Reedy / Juju Adams / Nommiin
-Press 1 to destroy struct <a> --> Garbage collects a list
-Press 2 to destroy struct <b> --> Executes a callback function
-Press 3 to destroy struct <c> --> Executes a callback script
-Press 4 to re-create struct 1
-" + (ds_exists(global.listReference, ds_type_list)? "List created by <a> exists" : "List created by <a> doesn't exist");
+var _status = __destructors_test_runner.IsComplete() ? "Complete" : (__destructors_test_runner.IsRunning() ? "Running" : "Idle");
 
-draw_text(10, 10, _string);
-var _t = DtorManager()
-draw_text(10, 200, "Manager  Size: " + string( _t.size) );
-draw_text(10, 220, "Manager Index: " + string(_t.index) );
-var _state = time_source_get_state(_t.step);
-switch(_state) {
-	case time_source_state_active:  draw_text(10, 240, "Manager TimeSource State: Active"); break;
-	case time_source_state_stopped: draw_text(10, 240, "Manager TimeSource State: Stopped"); break;
-}
+draw_text(10, 10, "Destructors Crispy Test Suite");
+draw_text(10, 30, "Status: " + _status);
+draw_text(10, 50, "Open the debug output to read the Crispy log.");

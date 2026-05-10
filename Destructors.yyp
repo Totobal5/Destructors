@@ -1,36 +1,53 @@
 {
-  "resourceType": "GMProject",
-  "resourceVersion": "1.7",
-  "name": "Destructors",
-  "AudioGroups": [
-    {"resourceType":"GMAudioGroup","resourceVersion":"1.3","name":"audiogroup_default","targets":-1,},
+  "$GMProject":"v1",
+  "%Name":"Destructors",
+  "AudioGroups":[
+    {"$GMAudioGroup":"v1","%Name":"audiogroup_default","exportDir":"","name":"audiogroup_default","resourceType":"GMAudioGroup","resourceVersion":"2.0","targets":-1,},
   ],
-  "configs": {
-    "children": [],
-    "name": "Default",
+  "configs":{
+    "children":[],
+    "name":"Default",
   },
-  "defaultScriptType": 1,
-  "Folders": [
-    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Example","folderPath":"folders/Example.yy",},
-    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Rooms","folderPath":"folders/Example/Rooms.yy",},
+  "defaultScriptType":1,
+  "Folders":[
+    {"$GMFolder":"","%Name":"Crispy","folderPath":"folders/Crispy.yy","name":"Crispy","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Destructors","folderPath":"folders/Destructors.yy","name":"Destructors","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Example","folderPath":"folders/Example.yy","name":"Example","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Rooms","folderPath":"folders/Example/Rooms.yy","name":"Rooms","resourceType":"GMFolder","resourceVersion":"2.0",},
   ],
-  "IncludedFiles": [],
-  "isEcma": false,
-  "LibraryEmitters": [],
-  "MetaData": {
-    "IDEVersion": "2023.11.1.129",
+  "ForcedPrefabProjectReferences":[],
+  "IncludedFiles":[],
+  "isEcma":false,
+  "LibraryEmitters":[],
+  "MetaData":{
+    "IDEVersion":"2024.14.4.222",
   },
-  "resources": [
+  "name":"Destructors",
+  "resources":[
+    {"id":{"name":"Destructors_License","path":"notes/Destructors_License/Destructors_License.yy",},},
+    {"id":{"name":"o_crispy_async","path":"objects/o_crispy_async/o_crispy_async.yy",},},
     {"id":{"name":"oExample","path":"objects/oExample/oExample.yy",},},
-    {"id":{"name":"oExample_CallbackScript","path":"scripts/oExample_CallbackScript/oExample_CallbackScript.yy",},},
-    {"id":{"name":"Destructors","path":"scripts/Destructors/Destructors.yy",},},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
+    {"id":{"name":"Crispy_Case_Async","path":"scripts/Crispy_Case_Async/Crispy_Case_Async.yy",},},
+    {"id":{"name":"crispy_Case","path":"scripts/crispy_Case/crispy_Case.yy",},},
+    {"id":{"name":"crispy_Config","path":"scripts/crispy_Config/crispy_Config.yy",},},
+    {"id":{"name":"crispy_Functions","path":"scripts/crispy_Functions/crispy_Functions.yy",},},
+    {"id":{"name":"crispy_Log","path":"scripts/crispy_Log/crispy_Log.yy",},},
+    {"id":{"name":"crispy_Runner","path":"scripts/crispy_Runner/crispy_Runner.yy",},},
+    {"id":{"name":"crispy_Self_Test","path":"scripts/crispy_Self_Test/crispy_Self_Test.yy",},},
+    {"id":{"name":"crispy_Suite","path":"scripts/crispy_Suite/crispy_Suite.yy",},},
+    {"id":{"name":"crispy_Test","path":"scripts/crispy_Test/crispy_Test.yy",},},
+    {"id":{"name":"Destructors_Tests","path":"scripts/Destructors_Tests/Destructors_Tests.yy",},},
+    {"id":{"name":"Destructors","path":"scripts/Destructors/Destructors.yy",},},
+    {"id":{"name":"oExample_CallbackScript","path":"scripts/oExample_CallbackScript/oExample_CallbackScript.yy",},},
   ],
-  "RoomOrderNodes": [
+  "resourceType":"GMProject",
+  "resourceVersion":"2.0",
+  "RoomOrderNodes":[
     {"roomId":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
   ],
-  "templateType": null,
-  "TextureGroups": [
-    {"resourceType":"GMTextureGroup","resourceVersion":"1.3","name":"Default","autocrop":true,"border":2,"compressFormat":"bz2","directory":"","groupParent":null,"isScaled":true,"loadType":"default","mipsToGenerate":0,"targets":-1,},
+  "templateType":null,
+  "TextureGroups":[
+    {"$GMTextureGroup":"","%Name":"Default","autocrop":true,"border":2,"compressFormat":"bz2","customOptions":"","directory":"","groupParent":null,"isScaled":true,"loadType":"default","mipsToGenerate":0,"name":"Default","resourceType":"GMTextureGroup","resourceVersion":"2.0","targets":-1,},
   ],
 }

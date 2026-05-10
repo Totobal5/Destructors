@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"Destructors_Tests",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"Destructors_Tests",
+  "parent":{
+    "name":"Destructors",
+    "path":"folders/Destructors.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

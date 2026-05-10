@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"Crispy_Case_Async",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"Crispy_Case_Async",
+  "parent":{
+    "name":"Crispy",
+    "path":"folders/Crispy.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

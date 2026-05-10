@@ -1,0 +1,11 @@
+{
+  "$GMNotes":"v1",
+  "%Name":"Destructors_License",
+  "name":"Destructors_License",
+  "parent":{
+    "name":"Destructors",
+    "path":"folders/Destructors.yy",
+  },
+  "resourceType":"GMNotes",
+  "resourceVersion":"2.0",
+}

@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "Destructors",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "Destructors",
-    "path": "Destructors.yyp",
+  "$GMScript":"v1",
+  "%Name":"Destructors",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"Destructors",
+  "parent":{
+    "name":"Destructors",
+    "path":"folders/Destructors.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

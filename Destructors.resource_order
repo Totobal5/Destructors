@@ -1,7 +1,20 @@
 {
-  "FolderOrderSettings": [],
-  "ResourceOrderSettings": [
+  "FolderOrderSettings":[
+    {"name":"Crispy","order":12,"path":"folders/Crispy.yy",},
+    {"name":"Destructors","order":13,"path":"folders/Destructors.yy",},
+  ],
+  "ResourceOrderSettings":[
+    {"name":"Destructors_License","order":1,"path":"notes/Destructors_License/Destructors_License.yy",},
+    {"name":"o_crispy_async","order":9,"path":"objects/o_crispy_async/o_crispy_async.yy",},
+    {"name":"Crispy_Case_Async","order":1,"path":"scripts/Crispy_Case_Async/Crispy_Case_Async.yy",},
+    {"name":"crispy_Config","order":2,"path":"scripts/crispy_Config/crispy_Config.yy",},
+    {"name":"crispy_Functions","order":3,"path":"scripts/crispy_Functions/crispy_Functions.yy",},
+    {"name":"crispy_Log","order":4,"path":"scripts/crispy_Log/crispy_Log.yy",},
+    {"name":"crispy_Runner","order":5,"path":"scripts/crispy_Runner/crispy_Runner.yy",},
+    {"name":"crispy_Self_Test","order":6,"path":"scripts/crispy_Self_Test/crispy_Self_Test.yy",},
+    {"name":"crispy_Suite","order":7,"path":"scripts/crispy_Suite/crispy_Suite.yy",},
+    {"name":"crispy_Test","order":8,"path":"scripts/crispy_Test/crispy_Test.yy",},
+    {"name":"Destructors_Tests","order":2,"path":"scripts/Destructors_Tests/Destructors_Tests.yy",},
     {"name":"oExample_CallbackScript","order":1,"path":"scripts/oExample_CallbackScript/oExample_CallbackScript.yy",},
-    {"name":"Destructors","order":11,"path":"scripts/Destructors/Destructors.yy",},
   ],
 }

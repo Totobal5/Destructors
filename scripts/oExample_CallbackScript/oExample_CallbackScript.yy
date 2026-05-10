@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "oExample_CallbackScript",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "Example",
-    "path": "folders/Example.yy",
+  "$GMScript":"v1",
+  "%Name":"oExample_CallbackScript",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"oExample_CallbackScript",
+  "parent":{
+    "name":"Example",
+    "path":"folders/Example.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }
